@@ -1,0 +1,7 @@
+{
+  "name": "GranjApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
