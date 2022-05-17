@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tab3"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Citas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="perfil=='admin'">
+    <ion-card-content >
+      <ion-card-header>
+        <ion-card-subtitle class="ion-text-center">Tus citas</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card-content>
+  </ion-card>
+  <div *ngIf="perfil=='admin'">
+    <ion-card *ngFor="let cita of Citas">
+      <ion-card-content >   
+          <img src="{{cita.foto}}">
+          <h1 class="ion-text-center">{{cita.nombre}}</h1>
+          <h2>Cita: {{cita.dia}} de {{cita.mes}}</h2>
+          <h2>Empresa: {{cita.empresa}}</h2>
+          <h2>Telefono: {{cita.telefono}}</h2>
+          <ion-button (click)="deleteProducto(cita)">
+            Visita Realizada
+          </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <ion-card *ngIf="perfil=='cliente'">
+    <ion-card-content>
+      <ion-card-header>
+        <ion-card-subtitle class="ion-text-center">Agenda tu cita</ion-card-subtitle>
+      </ion-card-header>
+      <ion-item>
+        <ion-label>dia</ion-label>
+        <ion-select [(ngModel)]="newCita.dia"(ionChange)="cambioValor(newCita.dia)">
+            <ion-select-option [value]="option" *ngFor="let option of  dia">{{option}}
+            </ion-select-option>
+        </ion-select> 
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Mes</ion-label>
+      <ion-select [(ngModel)]="newCita.mes" (ionChange)="cambioValor(newCita.mes)">
+          <ion-select-option [value]="option" *ngFor="let option of  mes">{{option}}
+          </ion-select-option>
+      </ion-select> 
+  </ion-item>
+  <ion-item>
+    <ion-label>Su cita será: {{newCita.dia}} / {{newCita.mes}}</ion-label>
+  </ion-item>
+  <ion-button (click)="guardarCita()">
+    Crear Cita
+  </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

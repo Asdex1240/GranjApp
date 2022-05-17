@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title class="ion-text-center">Inicia Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="wrapper">
+    <ion-card>
+      <ion-card-content>
+        <h1 class="ion-text-center">Inicia Sesión</h1>
+        <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+          <ion-label>
+            <ion-input type="email" formControlName="email" placeholder="Correo"></ion-input>
+            <ion-text color="danger" *ngIf="hasError('email','email')">
+              <h5>Debe ser un correo valido</h5>
+            </ion-text>
+            <ion-text color="danger" *ngIf="hasError('email','required')">
+              <h5>Campo requerido</h5>
+            </ion-text>
+          </ion-label>
+          <ion-label>
+            <ion-input type="password" formControlName="password"placeholder="Escribe tu contraseña"></ion-input>
+          <ion-text color="danger" *ngIf="hasError('password','required')">
+              <h5>Campo requerido</h5>
+          </ion-text>
+          </ion-label>
+          <ion-item-divider>
+            <ion-button size="larger" type="submit">Iniciar</ion-button>
+            <ion-button size="larger" routerLink="/tabs/register">Registrate</ion-button>
+          </ion-item-divider>
+        </form>
+      </ion-card-content>
+    </ion-card> 
+  </div>
+
+</ion-content>

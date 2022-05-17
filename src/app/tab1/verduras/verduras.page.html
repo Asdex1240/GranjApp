@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Verduras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let producto of productos">
+    <ion-card-content *ngIf="producto.categoria=='verdura'">
+      <img class="image"  [src]="producto.foto">
+        <ion-card-header>
+            <h1 class="ion-text-center">{{producto.nombre}}</h1>
+            <ion-card-subtitle class="ion-text-center">{{producto.descrip}}</ion-card-subtitle>
+        </ion-card-header>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

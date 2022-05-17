@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      Nuestra ubicacion
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Mapa</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+    <a href="https://www.google.com.mx/maps/place/EL+RINC%C3%93N+DE+LA+CEIBA/@25.4473872,-102.2027891,17z/data=!3m1!4b1!4m5!3m4!1s0x868f4942ae0b7d93:0x4f46a821f321bde2!8m2!3d25.4473824!4d-102.2006004">
+      <ion-fab vertical="center" horizontal="start" slot="fixed">
+        <ion-fab-button>
+          <ion-icon name="locate-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </a>
+  <div id="map"></div>
+  <div id="indicators"></div>
+</ion-content>

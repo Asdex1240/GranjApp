@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -17,7 +18,20 @@ const routes: Routes = [
       },
       {
         path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'entrar',
+        loadChildren: () => import('../entrar/entrar.module').then(m => m.EntrarPageModule)
+      },
+      {
+        path: 'register',
+        loadChildren: () => import('../register/register.module').then(m => m.RegisterPageModule)
+      },
+      {
+        path: 'maps',
+        loadChildren: () => import('../maps/maps.module').then(m => m.MapsPageModule)
       },
       {
         path: '',

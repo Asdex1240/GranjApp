@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+    <ion-card>
+      <ion-card-content>
+        <h1 class="ion-text-center">Registrar</h1>
+        <ion-input type="text" [(ngModel)]="newUser.nombre" placeholder="Nombre"></ion-input>
+        <ion-input type="text" [(ngModel)]="newUser.empresa" placeholder="Empresa"></ion-input>
+        <ion-input type="text" [(ngModel)]="newUser.email" placeholder="Correo"></ion-input>
+        <ion-input type="number" [(ngModel)]="newUser.tel" placeholder="Numero de telefono" maxlength="10"></ion-input>
+        <ion-input type="password" [(ngModel)]="newUser.password" placeholder="Escribe tu contraseña"></ion-input>
+        
+        <ion-item>
+          <ion-label class="ion-text-center">
+            Subir una foto menor a 2 mb
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label class="normal">
+            Tomar Foto:
+          </ion-label>
+        <ion-buttons>
+          <ion-button (click)="takePicture()">
+            <ion-icon slot="icon-only" name="camera" ></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label class="normal">
+              Foto:
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button>
+               <label for="file-upload">
+                 <ion-icon slot="icon-only" name="images"></ion-icon>
+               </label>
+                <input  (change)="newImageUpload($event)" id="file-upload" style="display: none" type="file"  accept="image/*">
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+
+        
+        <ion-item>
+          <img class="image"  [src]="newUser.foto">
+        </ion-item>
+        <ion-item-divider>
+          <ion-button size="larger" (click)="onRegister()">Registrar</ion-button>
+          <ion-button size="larger" routerLink="/tabs/entrar">Entrar</ion-button>
+        </ion-item-divider>
+      </ion-card-content>
+    </ion-card>
+</ion-content>
