@@ -21,7 +21,7 @@ export class Tab1Page {
         this.loged = false;
       }
     })
-    }
+  }
   fov(frove: string){
     if(frove== 'frutas'){
       this.router.navigate(['tabs/tab1/frutas']);

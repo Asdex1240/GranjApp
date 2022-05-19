@@ -9,11 +9,10 @@ declare var google: any;
 })
 export class MapsPage implements OnInit {
   mapRef = null;
-  directionsService = new google.maps.DirectionsService();
-  directionsDisplay = new google.maps.DirectionsRenderer();
+
   destination = { lat: 25.447264, lng: -102.200719 };
   constructor(    private geolocation: Geolocation,
-    private loadingCtrl: LoadingController) { }
+  private loadingCtrl: LoadingController) { }
 
   ngOnInit() {  this.loadMap();
   }
@@ -28,14 +27,13 @@ export class MapsPage implements OnInit {
       center: this.destination,
       zoom: 12
     });
-    this.directionsDisplay.setMap(this.mapRef);
+    
     google.maps.event
     .addListenerOnce(this.mapRef, 'idle', () => {
       loading.dismiss();
       this.addMaker(myLatLng.lat, myLatLng.lng);
       this.addMaker(this.destination.lat, this.destination.lng);
       mapEle.classList.add('show-map');
-      this.calculateRoute();
     });
   }
 
@@ -54,22 +52,5 @@ export class MapsPage implements OnInit {
       lng: rta.coords.longitude
     };
   }
-
-  private calculateRoute() {
-    this.directionsService.route({
-      origin: this.getLocation,
-      destination: this.destination,
-      travelMode: google.maps.TravelMode.DRIVING,
-    }, (response:any, status: any)  => {
-      if (status === google.maps.DirectionsStatus.OK) {
-        this.directionsDisplay.setDirections(response);
-      } else {
-        alert('Could not display directions due to: ' + status);
-      }
-    });
-    }
-    
-
-
 
 }

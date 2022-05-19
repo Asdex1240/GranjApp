@@ -41,12 +41,7 @@ export class EntrarPage implements OnInit {
 			this.ionicForm.controls[controlName].hasError(errorName) &&
 			this.ionicForm.controls[controlName].touched;
 	}
-  notZero(control: AbstractControl) {
-		if (control.value && control.value.monto <= 0) {
-			return { 'notZero': true };
-		}
-		return null;
-	} 
+
   submitForm(){
     if(this.ionicForm.valid){
       this.user.email = this.ionicForm.get('email').value;

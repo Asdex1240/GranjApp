@@ -48,11 +48,9 @@ export class CitasPage implements OnInit {
         console.log('no Logeado');
       }
     })
-  
   }
 
   ngOnInit() { this.getCitas(); }
-
   getDatosUser(uid: string){
     const path = 'Usuarios/';
     const id = uid;
@@ -65,10 +63,6 @@ export class CitasPage implements OnInit {
         this.telefono = res.tel;
       }
     })
-  }
-
-  cambioValor(value){
-    console.log(value);
   }
   async guardarCita(){
     if(this.newCita.dia == null || this.newCita.mes == null){
@@ -88,15 +82,6 @@ export class CitasPage implements OnInit {
     this.firestore.getCollection<Cita>(this.path).subscribe(  res => {
            this.Citas = res;
     });
-  }
-  async presentToast(msg: string) {
-    const toast = await this.interaction.toastController.create({
-      message: msg,
-      cssClass: 'normal',
-      duration: 2000,
-      color: 'light',
-    });
-    toast.present();
   }
   async deleteProducto(cita: Cita) {
     this.interaction.alertAdmin('cita', this.path, cita.id);

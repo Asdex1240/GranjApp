@@ -22,5 +22,4 @@ export class VerdurasPage implements OnInit {
            this.productos = res;
     });
   }
-
 }

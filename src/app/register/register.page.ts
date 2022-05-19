@@ -6,7 +6,7 @@ import { UserR } from '../models/user.model';
 import { FirestoreService } from '../services/firestore.service'; 
 import { InteractionService } from '../services/interaction.service'; 
 import { FirestorageService } from '../services/firestorage.service'; 
-import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx'
+import { Camera, CameraOptions } from '@awesome-cordova-plugins/camera/ngx';
 
 @Component({
   selector: 'app-register',
@@ -55,17 +55,10 @@ ngOnInit(){}
         const id = usuario.user.uid;
         this.newUser.uid = id;
         this.newUser.password = null;
-        await this.registro.createDoc(this.newUser, path, id).then( res => {
-          this.interaction.closeLoading();
-          this.interaction.presentToast('guardo con exito');
-        }).catch( error => {
-          this.interaction.closeLoading();
-          this.interaction.presentToast('Hubo un error' + error);
-          
-          });
         
-        await this.firestorageSvc.uploadImage(this.newFile, path, name);
-        console.log('2 done');
+        const res = await this.firestorageSvc.uploadImage(this.newFile, path, name);
+        this.newUser.foto = res;
+        await this.registro.createDoc(this.newUser, path, id);
         this.interaction.closeLoading();
         this.interaction.presentToast('Registrado con exito!');
         this.router.navigateByUrl('/tabs/tab3');

@@ -30,10 +30,7 @@ export class InteractionService {
   }
 
   async closeLoading() {
-
     await this.loading.dismiss();
-
-
   }
 
   async alertCuenta(){
@@ -52,6 +49,7 @@ export class InteractionService {
     });
     await alertElement.present();
   }
+  
   async alertAdmin(page:string, path:string, id:string){
     if(page == 'inv'){
       this.msg = '¿Desea eliminar este producto?';
